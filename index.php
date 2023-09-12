@@ -13,7 +13,12 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="container">
-
+    <a href="bonjour.php?nom=Dupont&amp;prenom=Jean">Dis-moi bonjour !</a>
+    <form action="contact.php" method="GET">
+        <!-- données à faire passer à l'aide d'inputs -->
+        <input name="nom">
+        <input name="prenom">
+    </form>
     <?php include_once('header.php'); ?>
         <h1>Site de recettes</h1>
 
