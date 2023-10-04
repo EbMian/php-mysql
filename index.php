@@ -27,18 +27,14 @@
     <?php include_once('login.php'); ?>
     
     <h1>Site de Recettes !</h1>
+    
+    <!-- On se connecte à MySQL -->
+    <?php include_once('mysql.php'); ?>
 
-    <!-- Si l'utilisateur existe, on affiche les recettes -->
-    <?php if(isset($_SESSION['LOGGED_USER'])): ?>
-        <?php foreach(getRecipes($recipes, 5) as $recipe) : ?>
-            <article>
-                <h3><?php echo $recipe['title']; ?></h3>
-                <div><?php echo $recipe['recipe']; ?></div>
-                <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
-            </article>
-        <?php endforeach ?>
-    <?php endif; ?>
-    </div>
+    <!-- On affiche chaque recette une à une -->
+    <?php foreach ($recipes as $recipe) : ?>
+    <p><?php echo $recipe['author']; ?> </p>
+    <?php endforeach; ?>
 
     <?php include_once('footer.php'); ?>
 </body>

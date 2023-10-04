@@ -1,4 +1,5 @@
 <?php
+
 const MYSQL_HOST = 'localhost';
 const MYSQL_PORT = 3306;
 const MYSQL_NAME = 'my_recipes';
@@ -16,4 +17,12 @@ try {
 } catch(Exception $exception) {
     die('Erreur : '.$exception->getMessage());
 }
+?>
+
+<?php
+// On récupère tout le contenu de la table recipes
+$sqlQuery = 'SELECT * FROM recipes';
+$recipesStatement = $db->prepare($sqlQuery);
+$recipesStatement->execute();
+$recipes = $recipesStatement->fetchAll();
 ?>
