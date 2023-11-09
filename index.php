@@ -4,9 +4,15 @@
 <!-- Si tout va bien, on peut continuer -->
 <?php
 // On récupère tout le contenu de la table recipes
-$sqlQuery = 'SELECT * FROM recipes WHERE is_enabled=1';
+$sqlQuery =
+    'SELECT * FROM recipes WHERE author = :author AND is_enabled = :is_enabled';
 $recipesStatement = $db->prepare($sqlQuery);
-$recipesStatement->execute();
+$recipesStatement->execute([
+    'author' => 'mathieu.nebra@exemple.com',
+    'is_enabled' => true,
+])
+or die(print_r($db->errorInfo()));
+
 $recipes = $recipesStatement->fetchAll();
 ?>
 <!DOCTYPE html>
